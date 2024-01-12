@@ -1,0 +1,448 @@
+/* text-field */
+.text-field {
+    margin-bottom: 1rem;
+  }
+  
+  .text-field__label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .text-field__input {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .text-field__input::placeholder {
+    color: #212529;
+    opacity: 0.4;
+  }
+  
+  .text-field__input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+  }
+  
+  .text-field__input:disabled,
+  .text-field__input[readonly] {
+    background-color: #f5f5f5;
+    opacity: 1;
+  }
+  
+  
+  
+  
+  [data-hint] {
+    position: relative;
+    cursor: hint;
+    z-index: +10;
+  }
+  
+  [data-hint]::after {
+      opacity: 0;
+      width: 600px;
+      color: #FFFFFF;
+      background-color: #4a4a4a;
+      border-radius: 6px;
+      padding: 10px;
+      content: attr(data-hint);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 22px;
+      position: absolute;
+      top: 25px;
+      left: 67%;
+      font-size: 14px;
+      transform: translate(-50%, -100%);
+      pointer-events: none;
+      transition: opacity 0.2s;
+  }
+  
+  [data-hint]:hover::after {
+      opacity: 1;
+  }
+  
+  
+  
+  
+  input[type=file]::file-selector-button {
+    background-color: #fff;
+    color: #0075ff;
+    border: 0px;
+    border-right: 1px solid #e5e5e5;
+    margin-right: 20px;
+  }
+  
+  
+  
+  .success-info {
+    margin: 32px 0;
+    padding: 36.5px 30px 36.5px 72px;
+    position: relative;
+    color: #06610e;
+    background: #d0fddc;
+    border-radius: 6px;
+  }
+  .success-info::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: block;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    background: url("../images/warning-success.svg") no-repeat center/contain;
+  }
+  
+  
+  .feather svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    object-fit: contain;
+    fill: none;
+    stroke: #727FA2;
+    transition: all 0.3s ease-out;
+  }
+  
+  .feather-green svg {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    object-fit: contain;
+    fill: none;
+    stroke: #03983c;
+    transition: all 0.3s ease-out;
+    stroke-width: 2;
+  }
+  
+  .feather-red svg {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    object-fit: contain;
+    fill: none;
+    stroke: #ff6a97;
+    transition: all 0.3s ease-out;
+    stroke-width: 2;
+  }
+  
+  .feather-yellow svg {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    object-fit: contain;
+    fill: none;
+    stroke: #e1cd17;
+    transition: all 0.3s ease-out;
+    stroke-width: 2;
+  }
+  
+  .feather-grey svg {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    object-fit: contain;
+    fill: none;
+    stroke: #727FA2;
+    stroke-width: 2;
+    transition: all 0.3s ease-out;
+  }
+  
+  .registration__block {
+    width: 100%;
+    margin: 100px auto;
+    max-width: 940px;
+    min-height: 740px;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  .registration__form {
+    display: grid;
+    grid-template-columns: 48.9361% 1fr;
+  }
+  
+  .form__registration__submit {
+    background: #00317B;
+  }
+  
+  .info-box {
+    padding: 25px 30px 25px 30px;
+    position: relative;
+    color: #2a2a2a;
+    background: #f3f3f3;
+    border-radius: 6px;
+  }
+  
+  .info-box-error {
+    padding: 25px 30px 25px 30px;
+    position: relative;
+    color: #FF6A97;
+    background: #ffdede;
+    border-radius: 6px;
+  }
+  
+  .info-box-success {
+    padding: 25px 30px 25px 30px;
+    position: relative;
+    color: #06610e;
+    background: #d0fddc;
+    border-radius: 6px;
+  }
+  
+  input:valid {
+    color: navy;
+  }
+  input:invalid {
+    color: red;
+  }
+  
+  
+  .is-checkboxes-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);;
+    gap: 16px 40px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Ð¡Ñ‚Ð¸Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÑÐµÐ»ÐµÐºÑ‚Ð° Ð´Ð»Ñ Ð¿Ñ€Ð¸Ð¼ÐµÑ€Ð°: */
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  
+  /* Ð’Ñ‹Ð¿Ð°Ð´Ð°ÑŽÑ‰Ð¸Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº: */
+  .select ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border: 1px solid #0095ff;
+    width:100px;
+  }
+  
+  /* ÐŸÑƒÐ½ÐºÑ‚ ÑÐ¿Ð¸ÑÐºÐ°: */
+  .select ul li {
+    padding: 5px;
+  }
+  
+  /* ÐÐ°Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ð½Ð° Ð¿ÑƒÐ½ÐºÑ‚ ÑÐ¿Ð¸ÑÐºÐ°: */
+  .select ul li:hover {
+    background: #0095ff;
+    color: #fff;
+  }
+  
+  
+  /* Ð’Ñ‹Ð±Ð¾Ñ€ option "Please Select": */
+  .select__gap {
+    position: relative;
+    padding: 5px;
+    width:150px;
+    border: 1px solid #ccc;
+    padding-right: 10px;
+  }
+  
+  /* Ð¡Ñ‚Ñ€ÐµÐ»Ð¾Ñ‡ÐºÐ°: */
+  .select__gap:after {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    border-top: 5px solid #000;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .chart {
+    padding: 36px 45px 31px 21px;
+  }
+  .chart__title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    color: #5C7EB1;
+  }
+  .chart__block {
+    margin: 45px 0 0;
+    padding-bottom: 70px;
+    display: flex;
+    gap: 21px;
+    overflow: hidden;
+  }
+  .chart__y {
+    min-height: 171px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 33px;
+  }
+  .chart__y span {
+    display: block;
+    position: relative;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: right;
+    color: rgba(0, 49, 123, 0.5);
+  }
+  .chart__y span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 21px);
+    width: 9999px;
+    border-top: 1px solid #E3E5EC;
+  }
+  .chart__x {
+    padding: 9px 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .chart__item {
+    flex-grow: 1;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .chart__bar {
+    display: block;
+    background: #E3E5EC;
+  }
+  .chart__label {
+    position: absolute;
+    right: 20%;
+    top: 100%;
+    transform-origin: right;
+    transform: rotate(-30deg);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: rgba(0, 49, 123, 0.5);
+  }
+  
+  .chart-circle {
+    width: 178px;
+    height: 178px;
+    position: relative;
+    border-radius: 50%;
+  }
+  .chart-circle::before, .chart-circle::after, .chart-circle__label {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #5C7EB1;
+  }
+  .chart-circle::before, .chart-circle::after {
+    position: absolute;
+    bottom: 7px;
+  }
+  .chart-circle::before {
+    content: "0";
+    left: -4px;
+  }
+  .chart-circle::after {
+    content: "100";
+    right: -14px;
+  }
+  .chart-circle svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .chart-circle__content {
+    position: absolute;
+    left: 50%;
+    top: 65px;
+    transform: translateX(-50%);
+  }
+  .chart-circle__value {
+    font-weight: 500;
+    font-size: 26px;
+    text-align: center;
+    color: #0075FF;
+  }
+  .chart-circle__label {
+    white-space: nowrap;
+    text-align: center;
+  }
+  @media screen and (max-width: 767px) {
+    .chart-circle {
+      width: 118px;
+      height: 118px;
+    }
+    .chart-circle::before, .chart-circle::after, .chart-circle__label {
+      font-size: 11px;
+    }
+    .chart-circle__content {
+      top: 38px;
+    }
+    .chart-circle__value {
+      font-size: 17px;
+    }
+    .chart-circle__label {
+      white-space: unset;
+    }
+  }
+  

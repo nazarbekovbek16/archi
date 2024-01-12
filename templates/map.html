@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="ru"><head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Карта процессов</title>
+  <link rel="shortcut icon" href="assets/image/favicon.ico"/>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <meta name="autor" content="SoftDeCo LLP (c) 2023"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500&amp;family=Roboto+Flex:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/libs/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.min.css"/>
+  <link rel="stylesheet" href="assets/css/libs/select2.min.css"/>
+  <link rel="stylesheet" href="assets/css/softdeco.css"/>
+
+  <link type="text/css" rel="stylesheet" href="lib/jquery-ui-layout/css/layout-default-1.4.4.css"/>
+  <link type="text/css" rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.yeti.css"/>
+  <link type="text/css" rel="stylesheet" href="css/model.css"/>
+  <link type="text/css" rel="stylesheet" href="css/i18n.css"/>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script> 
+  <script src="https://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+  <style>
+    #bottomFrame {
+      position: relative;
+      height: 200px; 
+      border: none;
+    }
+  </style>
+</head>
+
+<body class="has-sidebar">
+  <div class="body-wrapper">
+  <header class="header" style="border-bottom: 2px solid #4c647b;">
+  <div class="container container_large">
+  <div class="header__inner">
+    <div class="header__column header__column_left">
+      <div class="header__lang lang">
+        <div class="lang__current" style="visibility: hidden;">ru</div>   
+      </div>
+    </div>
+  <a class="header__logo logo" href="https://demo.govarch.kz">
+    <img src="assets/image/logo_ru.png" height="45" alt="Архитектурный портал электронного правительства" title="Архитектурный портал электронного правительства"/>
+  </a>
+  <div class="header__column header__column_right">
+    <nav class="header__menu">
+      {{ if .IsAuthenticated }}
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a class="header__menu-link header__menu-link_download map">Скачать Карту процессов</a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link header__menu-link_download" href="/logout">Выйти</a>
+          </li>
+        </ul>
+      {{ else }}
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a class="header__menu-link header__menu-link_download" href="/login">Авторизация</a>
+          </li>
+        </ul>
+      {{ end }}
+    </nav>
+  </div>
+</div>
+</div>
+</header>
+<div>
+  
+</div>
+<aside style="overflow-y: auto; border: 5px #000000;  width: 335px;" class="sidebar sidebar_opened">
+  <nav class="sidebar__menu">
+    <ul class="sidebar__list">
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="/">
+          <span style="font-size: 15px;">Назад</span>
+        </a>
+      </li>
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="/map">
+          <span style="font-size: 15px;">Карта процессов</span>
+        </a>
+      </li>
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-224c804c270142b5aa5c02a2744c8f83.html" target="view">
+          <span style="margin-left: 10%;">Бизнес</span>
+        </a>
+      </li>
+      <li class="sidebar__item sidebar__item_has-submenu ">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-ceed37f6134e4da5b2c00bedc5873cc2.html" target="view">
+          <span style="margin-left: 10%;">Внешняя политика</span>
+        </a>
+      </li>
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-3da300bba90749cdb81678a4851620c2.html" target="view">
+          <span style="margin-left: 10%;">Государственное управление</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-05d659912d604d419e853da784ff031b.html" target="view">
+          <span style="margin-left: 10%;">Здравохранение</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-a9b76f0391d340c4ae87b43572dd01c7.html" target="view">
+          <span style="margin-left: 10%;">Инфраструктура</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-593540ac36014108b504baa40706276f.html" target="view">
+          <span style="margin-left: 10%;">Культура, СМИ, религия</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-3d27c8575f034f16a89dd5dbaffaa16a.html" target="view">
+          <span style="margin-left: 10%;">Наука и инновации</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-63169428518b46ebadead21c8148eb17.html" target="view">
+          <span style="margin-left: 10%;">Образование</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-c989174b8a624b83bfb2ce70b846c0e7.html" target="view">
+          <span style="margin-left: 10%;">Правосудие и безопасность</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-0c7008d6cd4b4066933d3fc4dcf01d26.html" target="view">
+          <span style="margin-left: 10%;">Природные ресурсы и экология</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-f74b7486169c49ae8a9349d058b39fe9.html" target="view">
+          <span style="margin-left: 10%;">Промышленность</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-a998c9f2b9d94cb2b7daa5f032ed5cea.html" target="view">
+          <span style="margin-left: 10%;">Сельское хозяйство</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-d56e208115694b69ae29dafe82e2e582.html" target="view">
+          <span style="margin-left: 10%;">Социальное обеспечение</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-020d3f59a6a5466ca5af20adf925989d.html" target="view">
+          <span style="margin-left: 10%;">Спорт и туризм</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-83a796928e7d4f60ab5e310c3d49bd0d.html" target="view">
+          <span style="margin-left: 10%;">Транспорт</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-941690422d694c4186e78a0c6fb8155d.html" target="view">
+          <span style="margin-left: 10%;">Финансы</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-eaeb6cac164847a8b779c3171aa0fc8d.html" target="view">
+          <span style="margin-left: 10%;">Энергетика</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <br><br><br><br>
+  <iframe name="legend" class="ui-layout-south ui-layout-pane ui-layout-pane-south" scrolling="no" src="/map_legend" style="background-color: #ffffff; border: none; position: relative; margin: 0px; inset: auto 0px 0px; width: 300px; z-index: 0; height: 205px; display: block; visibility:visible;"></iframe>
+</aside>
+
+<iframe name="view" src="/modelMap" style="position: absolute; margin-top: 4px; inset: 60px 0px 0px 337px; height: 93%; width: 82.5%; z-index: 0; display: block; visibility: visible;"></iframe>
+
+</div>
+
+<script src="assets/js/libs/jquery-3.7.0.min.js"></script>
+<script src="assets/js/libs/jquery-ui.min.js"></script>
+<script src="assets/js/libs/jquery.validate.min.js"></script>
+<script src="assets/js/libs/autosize.min.js"></script>
+<script src="assets/js/libs/select2.min.js"></script>
+<script src="assets/js/main.min.js"></script>
+ 
+<div class="modal fade first-load" id="myModalHint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-body">
+					<iframe style="height: 300px;" id="frame-hint" name="element" onload="if($('#myModalHint').hasClass('first-load')) $('#myModalHint').removeClass('first-load'); else $('#myModalHint').modal({show:true});"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Script is running...");
+
+    $(".map").on("click", function (event) {
+      event.preventDefault();
+      console.log("Link clicked!");
+
+      // Your existing D3 and XLSX code here
+      d3.json("https://raw.githubusercontent.com/MarjanNur/tree_KMD/main/ExcelMap_20231206_1450.json", function(error, json) {
+        function exportWorksheet(jsonObject) {
+          var today = new Date();
+          var formatter = new Intl.DateTimeFormat("ru-RU");
+          var formattedDate = formatter.format(today);
+          var myFile = "processMap("+formattedDate+").xlsx";
+          var myWorkBook = XLSX.utils.book_new();
+          var counter=-1;
+
+          const domens = ["СПОРТ И ТУРИЗМ","ЗДРАВООХРАНЕНИЕ","Природные ресурсы и экология","Бизнес","НАУКА И ИННОВАЦИИ","ГОСУПРАВЛЕНИЕ","КУЛЬТУРА РЕЛИГИЯ СМИ","Образование","Транспорт","ФИНАНСЫ","Сельское Хозяйство","ИНФРАСТРУКТУРА","Правосудие и безопасность","Внешняя политика","Социальное обеспечение","Энергетика","Промышленность"];
+
+          const excelMap = {};
+
+          domens.forEach((domain) => {
+            excelMap[domain] = [];
+          });
+
+          jsonObject.forEach(function (item) {
+            var typeOfObject = item["Домен"];
+            if (!typeOfObject) {
+              counter=counter+1;
+            } else {
+              excelMap[domens[counter]].push(item);
+            }
+          });
+
+          for (var group in excelMap) {
+            var myWorkSheet = XLSX.utils.json_to_sheet(excelMap[group]);
+            XLSX.utils.book_append_sheet(myWorkBook, myWorkSheet, group);
+          }
+
+          XLSX.writeFile(myWorkBook, myFile);
+        }
+
+        exportWorksheet(json);
+      });
+    });
+  });
+</script>
+<script type="text/javascript" src="lib/jquery/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="lib/jquery-ui/js/jquery-ui-1.11.2.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap-3.3.2.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap-3.3.2.min.js"></script>
+<script type="text/javascript" src="js/model.js"></script>
+<script type="text/javascript" src="js/url-polyfill.min.js"></script>
+
+
+ </body></html>
