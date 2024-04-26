@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="ru"><head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Концептуальная модель данных</title>
+  <link rel="shortcut icon" href="assets/image/favicon.ico"/>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Roboto+Flex:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/libs/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.min.css"/>
+  <link rel="stylesheet" href="assets/css/libs/select2.min.css"/>
+  <link rel="stylesheet" href="assets/css/softdeco.css"/>
+
+  <link type="text/css" rel="stylesheet" href="lib/jquery-ui-layout/css/layout-default-1.4.4.css"/>
+<link type="text/css" rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.yeti.css"/>
+  <link type="text/css" rel="stylesheet" href="css/model.css"/>
+  <link type="text/css" rel="stylesheet" href="css/i18n.css"/>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    .header-buttons {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+    }
+
+    /* Style for each button */
+    .header-buttons button {
+      margin-left: 10px; /* Add margin between buttons */
+      /* Add any additional styles as needed */
+    }
+  </style>
+</head>
+
+<body class="has-sidebar" style="position: fixed;width: 100%;height: 100%; overflow: hidden;">
+  <div class="body-wrapper">
+    <header class="header" style="border-bottom: 2px solid #4c647b;">
+      <div class="container container_large">
+        <div class="header__inner">
+          <div class="header__column header__column_left">
+            <div class="header__lang lang">
+              <div class="lang__current" style="visibility: hidden;">ru</div>    
+            </div>
+          </div>
+        
+        <a class="header__logo logo" href="https://demo.govarch.kz">
+          <img src="assets/image/logo_ru.png" height="45" alt="Архитектурный портал электронного правительства" title="Архитектурный портал электронного правительства"/>
+        </a>
+        <div class="header__column header__column_right">
+          <nav class="header__menu">
+            {{ if .IsAuthenticated }}
+              <ul class="header__menu-list">
+                <li class="header__menu-item">
+                  <a class="header__menu-link header__menu-link_download brbr">Скачать КМД</a>
+                </li>
+                <li class="header__menu-item">
+                  <a class="header__menu-link header__menu-link_download" href="" onclick="downloadFileOwner()">Скачать ВД</a>
+                </li>
+                <li class="header__menu-item">
+                  <a class="header__menu-link header__menu-link_download" href="" onclick="downloadFileSource()">Скачать ЭИ</a>
+                </li>
+                <li class="header__menu-item">
+                  <a class="header__menu-link header__menu-link_download" href="/logout">Выйти</a>
+                </li>
+                <li class="header__menu-item">
+                  <a class="header__menu-link header__menu-link_download" href="/element/id-91b8c8a3f7ae4397a8fc209b3187bcc0" target="element">test</a>
+                </li>
+              </ul>
+            {{else}}
+              <ul class="header__menu-list">
+                <li class="header__menu-item">
+                  <a class="header__menu-link header__menu-link_download" href="/login">Авторизация</a>
+                </li>
+              </ul>
+            {{ end }}
+          </nav>
+        </div>
+      </div>
+      </div>
+    </header>
+<div>
+  
+</div>
+<aside style="overflow-y: auto; border: 5px #000000;  width: 335px;" class="sidebar sidebar_opened">
+  <nav class="sidebar__menu">
+    <ul class="sidebar__list">
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="/">
+          <span style="font-size: 15px;">Назад</span>
+        </a>
+      </li>
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="/kmd">
+          <span style="font-size: 15px;">Концептуальная модель данных</span>
+        </a>
+      </li>
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-29c0e16d0e3940bcacbefedebe0127ca.html" target="view">
+          <span style="margin-left: 10%;">Бизнес</span>
+        </a>
+      </li>
+      
+      <li class="sidebar__item sidebar__item_has-submenu ">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-a4abb70d462c4ff988d5c8f762b34cf5.html" target="view">
+          <span style="margin-left: 10%;">Внешняя политика</span>
+        </a>
+      </li>
+      <li class="sidebar__item ">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-a7a01e987d71424a89d49abf9bc8d3dd.html" target="view">
+          <span style="margin-left: 10%;">Государственное управление</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-5bdde1fff9cf4097ab355524140d748a.html" target="view">
+          <span style="margin-left: 10%;">Здравохранение</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-e2fa7d44cb0f494ba9f3ebbaf638817b.html" target="view">
+          <span style="margin-left: 10%;">Инфраструктура</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-d87d24e802d144b9bbdec23b97ca70ba.html" target="view">
+          <span style="margin-left: 10%;">Культура, СМИ, религия</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-12a4b81d376c43ea912a8f07e0ac801c.html" target="view">
+          <span style="margin-left: 10%;">Наука и инновации</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-8516f7dbe1554870aac050ad0806e7ae.html" target="view">
+          <span style="margin-left: 10%;">Образование</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-c086309728ef4432963bc1fd6cd95ba0.html" target="view">
+          <span style="margin-left: 10%;">Правосудие и безопасность</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-b1ba872899bd41af848e77506372a522.html" target="view">
+          <span style="margin-left: 10%;">Природные ресурсы и экология</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-efc9337c200144669ca5134439699e87.html" target="view">
+          <span style="margin-left: 10%;">Промышленность</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-074ea3cf7c644947a56651313811fe30.html" target="view">
+          <span style="margin-left: 10%;">Сельское хозяйство</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-d9e30b2a943e4fa3b41dc8fb60011523.html" target="view">
+          <span style="margin-left: 10%;">Социальное обеспечение</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-9e2e1c2b974f4b5b896bbaa881686c8b.html" target="view">
+          <span style="margin-left: 10%;">Спорт и туризм</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-3c8c48ff0ba94be18dcfe90decfdcec1.html" target="view">
+          <span style="margin-left: 10%;">Транспорт</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-97b28cadf1824582a2d415b1f5895b94.html" target="view">
+          <span style="margin-left: 10%;">Финансы</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-4ee1cee2bbd34e07a903d1b52b10f74e.html" target="view">
+          <span style="margin-left: 10%;">Энергетика</span>
+        </a>
+      </li>
+      <li>
+        <a class="sidebar__link">
+          <span style="font-size: 15px;">Субьекты</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-c609bd850c0f455e9e27ecde4d1f513a.html" target="view">
+          <span style="margin-left: 10%;">Физ.лицо</span>
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-732c3274e89f4858b97c2e31108878bb.html" target="view">
+          <span style="margin-left: 10%;">Юр.лицо</span>
+        </a>
+      </li>
+      <li><a class="sidebar__link" href="id-89979e64baae4e45ac5fc7f3438e8d8e/views/id-5ade6b9a85b646a0bae39fc5a4cee144.html"><span style="font-size: 15px;"> </span></a></li>
+      
+      
+      
+    </ul>
+  </nav>
+  <iframe name="legend" class="ui-layout-south ui-layout-pane ui-layout-pane-south" scrolling="no" src="/kmd_legend" style="background-color: #ffffff; border: none; position: relative; margin: 0px; inset: auto 0px 0px; width: 300px; z-index: 0; height: 195px; display: block; visibility:visible;"></iframe>
+</aside>
+
+<iframe name="view" src="/modelKMD" style="position: absolute; margin-top: 4px; inset: 60px 0px 0px 337px; height: 93%; width: 82.5%; z-index: 0; display: block; visibility: visible;"></iframe>
+
+
+</div>
+
+  <script src="assets/js/libs/jquery-3.7.0.min.js"></script>
+  <script src="assets/js/libs/jquery-ui.min.js"></script>
+  <script src="assets/js/libs/jquery.validate.min.js"></script>
+  <script src="assets/js/libs/autosize.min.js"></script>
+  <script src="assets/js/libs/select2.min.js"></script>
+  <script src="assets/js/main.min.js"></script>
+
+  <div class="modal fade first-load" id="myModalHint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <iframe style="height: 300px;" id="frame-hint" name="element" onload="if($('#myModalHint').hasClass('first-load')) $('#myModalHint').removeClass('first-load'); else $('#myModalHint').modal({show:true});"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function exportWorksheet(jsonObject) {
+        var today = new Date();
+        var formatter = new Intl.DateTimeFormat("ru-RU");
+        var formattedDate = formatter.format(today);
+        var myFile = "KMD("+formattedDate+").xlsx";
+        var myWorkBook = XLSX.utils.book_new();
+        var counter=-1
+        //const domens = ["Бизнес", "Внешняя политика", "Государственное управление", "Здравохранение", "Инфраструктура", "Культура, СМИ, религия", "Наука и инновации", "Образование", "Правосудие и безопасность", "Природные ресурсы и экология", "Промышленность", "Сельское хозяйство", "Социальное обеспечение", "Спорт и туризм", "Транспорт", "Финансы", "Энергетика"]
+        const domens = ["Сельское хозяйство", "Наука и инновации", "Бизнес", "Транспорт", "Энергетика", "Здравоохранение", "Образование", "Финансы", "Спорт и туризм", "Внешняя политика", "Государственное управление", "Природные ресурсы и экология", "Правосудие и безопасность", "Культура, СМИ, религия", "Социальное обеспечение", "Инфраструктура", "Промышленность"]
+        const excelMap = {};
+
+        domens.forEach((domain) => {
+          excelMap[domain] = [];
+        });
+
+        jsonObject.forEach(function (item) {
+          var typeOfObject = item["Домен"];
+          if (!typeOfObject) {
+            counter=counter+1
+          }else{
+            excelMap[domens[counter]].push(item)
+          }
+        });
+
+        for (var group in excelMap) {
+          var myWorkSheet = XLSX.utils.json_to_sheet(excelMap[group]);
+          XLSX.utils.book_append_sheet(myWorkBook, myWorkSheet, group);
+        }
+        XLSX.writeFile(myWorkBook, myFile);
+      }
+
+      document.querySelector(".brbr").addEventListener("click", function (event) {
+        event.preventDefault();
+        fetch("https://raw.githubusercontent.com/MarjanNur/tree_KMD/main/ExcelKMD_20231206_1450.json")
+        .then(response => response.json())
+        .then(jsonData => {
+          console.log("JSON data fetched successfully");
+          exportWorksheet(jsonData);
+        })
+        .catch(error => {
+          console.error('Error fetching JSON data:', error);
+        });
+      });
+    });
+
+    function downloadFileOwner() {
+      // Получаем текущую дату
+      var today = new Date();
+      var formatter = new Intl.DateTimeFormat("ru-RU");
+      var formattedDate = formatter.format(today);
+
+      // Формируем имя файла с текущей датой
+      var fileName = 'владелец_данных(' + formattedDate + ').xlsx';
+
+      // Создаем ссылку для скачивания
+      var link = document.createElement('a');
+      link.href = './elements/owner.xlsx';
+      link.download = fileName;
+
+      // Добавляем ссылку на страницу и эмулируем клик
+      document.body.appendChild(link);
+      link.click();
+
+      // Удаляем временную ссылку
+      document.body.removeChild(link);
+    }
+
+    function downloadFileSource() {
+      // Получаем текущую дату
+      var today = new Date();
+        var formatter = new Intl.DateTimeFormat("ru-RU");
+        var formattedDate = formatter.format(today);
+
+      // Формируем имя файла с текущей датой
+      var fileName = 'эталонный_источник(' + formattedDate + ').xlsx';
+
+      // Создаем ссылку для скачивания
+      var link = document.createElement('a');
+      link.href = './elements/original_source.xlsx';
+      link.download = fileName;
+
+      // Добавляем ссылку на страницу и эмулируем клик
+      document.body.appendChild(link);
+      link.click();
+
+      // Удаляем временную ссылку
+      document.body.removeChild(link);
+    }
+    function submitForm() {
+      document.getElementById('postForm').submit();
+    }
+  </script>
+
+<script type="text/javascript" src="lib/jquery/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="lib/jquery-ui/js/jquery-ui-1.11.2.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap-3.3.2.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap-3.3.2.min.js"></script>
+<script type="text/javascript" src="js/model.js"></script>
+<script type="text/javascript" src="js/url-polyfill.min.js"></script>
+
+
+ </body></html>
